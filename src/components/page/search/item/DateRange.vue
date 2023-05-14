@@ -14,7 +14,7 @@
     end-placeholder="结束时间" value-format="YYYY-MM-DD HH:mm:ss" />
 </template>
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 import type { SearchItem } from '../Types';
 
 const props = defineProps<{
@@ -101,9 +101,7 @@ function setDefaultValue() {
     v = props.searchItem.default;
   }
   modelValue.value = v as string;
-  nextTick(() => {
-    onChange(v)
-  })
+  onChange(v)
 }
 
 defineExpose({

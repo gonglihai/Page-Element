@@ -5,8 +5,8 @@
         {{ searchItem.name }}
       </div>
       <div class="page-search-field">
-        <component :is="searchItemType(searchItem.type)" :searchItem="searchItem"
-          :formData="formData" ref="componentRef" />
+        <component :is="searchItemType(searchItem.type)" :searchItem="searchItem" :formData="formData"
+          ref="componentRef" />
       </div>
     </div>
     <div class="page-search-button-container">
@@ -16,7 +16,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, type Component } from "vue";
+import { ref, type Component, nextTick } from "vue";
 import type { SearchItem } from "./Types";
 import { searchItemType } from './item/Index';
 
@@ -24,7 +24,7 @@ const props = defineProps<{
   config: SearchItem[]
 }>();
 
-const emit = defineEmits(['reset', 'search']);
+const emit = defineEmits(['reset', 'search', 'init']);
 
 /**
  * 创建表单对象字段
@@ -34,11 +34,12 @@ const formData = ref({});
 /**
  * 表单字段组件实例
  */
- const componentRef = ref(null);
-function reset() {
-  // 重置表单
-  formData.value = {};
+const componentRef = ref(null);
 
+/**
+ * 重置事件
+ */
+function reset() {
   // 通知表单项子组件重置事件
   if (componentRef.value) {
     (componentRef.value as Array<Component>).forEach(componentItem => {
@@ -48,8 +49,10 @@ function reset() {
       }
     })
   }
-  // 通知上级重置
-  emit('reset');
+  nextTick(() => {
+    // 通知上级重置
+    emit('reset', formData.value);
+  })
 }
 
 </script>

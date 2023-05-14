@@ -6,9 +6,10 @@
   </el-select>
 </template>
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 import type { SearchItem } from '../Types';
 import { get } from "../../util/Api";
+import { Log } from "../../util/Log";
 
 // 下拉框选项
 const options = ref([] as { id: string, name: string }[]);
@@ -48,12 +49,14 @@ function setOptions() {
     get(props.searchItem.api).then(r => {
       options.value = r.data;
       loading.value = false;
+      Log.info("api-select", "加载数据", r);
       setCheckValue(r.data)
     })
     return;
   }
 
   // api 获取不到, 从 配置的静态中获取
+  // todo 同 api 响应缓存
   if (props.searchItem.options) {
     options.value = props.searchItem.options
     setCheckValue(props.searchItem.options);
@@ -84,9 +87,7 @@ function setCheckValue(optionsData: any[]) {
  * @param options 
  */
 function setDefaultValue() {
-  nextTick(() => {
-    setCheckValue(options.value);
-  })
+  setCheckValue(options.value);
 }
 
 defineExpose({

@@ -33,5 +33,5 @@ export function get(url: string, params?: any): Promise<Result> {
 }
 
 export function post(url: string, params?: any): Promise<Result> {
-  return instance.post(url, { params });
+  return instance.post(url, params);
 }

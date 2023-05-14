@@ -64,7 +64,8 @@ const config = ref({
   button: [
     { icon: 'Plus', name: '添加', event: 'inner-add', color: "info" },
     { icon: 'Edit', name: '编辑', event: 'inner-edit', color: "danger" },
-    { icon: 'Delete', name: '删除', event: 'inner-delete', color: "warning" },
+    { icon: 'Delete', name: '删除', event: 'inner-delete', color: "warning", api: 'api/delete.json' },
+    { icon: 'Delete', name: '删除2', event: 'inner-delete', color: "warning", api: 'api/deleteFail.json' },
     { icon: 'Operation', name: '自定义', event: 'custom', color: "success" }
   ],
   table: {
