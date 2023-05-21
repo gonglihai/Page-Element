@@ -68,7 +68,7 @@ function loadData(query?: any) {
   }
   if (props.config.api) {
     get(props.config.api, params).then(r => {
-      Log.info("table 加载数据", 'param:', params, 'result:', r);
+      Log.debug("table 加载数据", 'param:', params, 'result:', r);
       tableData.value = r.data;
       total.value = r.total ? r.total : r.data;
     }).finally(() => {
@@ -94,7 +94,6 @@ const emit = defineEmits(['update:selectRows']);
  * @param rows 行
  */
 function handleSelectionChange(rows?: any[]) {
-  Log.info("123", rows)
   emit('update:selectRows', rows);
 }
 </script>

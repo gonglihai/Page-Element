@@ -49,7 +49,7 @@ function setOptions() {
     get(props.searchItem.api).then(r => {
       options.value = r.data;
       loading.value = false;
-      Log.info("api-select", "加载数据", r);
+      Log.debug("api-select", "加载数据", r);
       setCheckValue(r.data)
     })
     return;

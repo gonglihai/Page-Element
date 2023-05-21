@@ -1,4 +1,7 @@
 export const Log = {
+  debug(...args: any[]) {
+    console.log(...logPrefix('debug'), ...args);
+  },
   info(...args: any[]) {
     console.log(...logPrefix('info'), ...args);
   },
@@ -12,6 +15,7 @@ export const Log = {
 
 // 日志级别及样式配置
 const Level = {
+  debug: ['%cdebug', 'background:#aaa; color:#fff; border-radius: 3px; padding:0 4px'],
   info: ['%cinfo', 'background:#909399; color:#fff; border-radius: 3px; padding:0 4px'],
   warn: ['%cwarn', 'background:#e6a23c; color:#fff; border-radius: 3px; padding:0 4px'],
   error: ['%cerror', 'background:#f56c6c; color:#fff; border-radius: 3px; padding:0 4px'],

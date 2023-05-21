@@ -1,5 +1,5 @@
 <template>
-  <page :config="config"></page>
+  <page :config="config" @buttonClick="buttonClick"></page>
   <el-link type="primary" href="https://element-plus.gitee.io/zh-CN/component/button.html" target="_blank">
     element-plus 文档
   </el-link>
@@ -8,6 +8,8 @@
 import { ref } from 'vue';
 import type { Config } from '@/components/page/Config';
 import Page from '../../components/page/Page.vue'
+import type { ButtonClickHandleParam } from '@/components/page/button/Types';
+import { Log } from '@/components/page/util/Log';
 
 const config = ref({
   search: [
@@ -63,10 +65,10 @@ const config = ref({
   ],
   button: [
     { icon: 'Plus', name: '添加', event: 'inner-add', color: "info" },
-    { icon: 'Edit', name: '编辑', event: 'inner-edit', color: "danger" },
+    { icon: 'Edit', name: '编辑', event: 'edit', color: "danger", selectCount: 1, minCount: 1, maxCount: 1, },
     { icon: 'Delete', name: '删除', event: 'inner-delete', color: "warning", api: 'api/delete.json' },
     { icon: 'Delete', name: '删除2', event: 'inner-delete', color: "warning", api: 'api/deleteFail.json' },
-    { icon: 'Operation', name: '自定义', event: 'custom', color: "success" }
+    {  name: '自定义', event: 'custom' }
   ],
   table: {
     api: 'api/DataTable.json',
@@ -92,4 +94,8 @@ const config = ref({
 
 } as Config)
 
+
+function buttonClick(param: ButtonClickHandleParam) {
+  Log.info('PageTest', param);
+}
 </script>

@@ -13,27 +13,37 @@ import PTable from "./table/Table.vue";
 import PForm from "./form/Index.vue";
 import { Log } from "./util/Log";
 import type { Config } from './Config';
-import type { ButtonItem } from './button/Types';
+import type { ButtonItem, ButtonClickHandleParam } from './button/Types';
 import { ref } from 'vue';
-import { handle } from './button/EventHandle';
+import { buttonEventHandle } from './button/buttonEventHandle/ButtonEventHandle';
 
 defineProps<{
   config: Config
 }>()
 
+const emit = defineEmits(['buttonClick']);
 
-const pageTable = ref(null);  // 数据表格组件
+
 /**
  * 查询重置
  */
 function searchReset(searchForm: any) {
-  (pageTable.value as unknown as { loadData: (param: any) => undefined }).loadData(searchForm);
+  tableReloadData(searchForm);
 }
 /**
  * 查询
  */
 function searchSearch(searchForm: any) {
-  (pageTable.value as unknown as { loadData: (param: any) => undefined }).loadData(searchForm);
+  tableReloadData(searchForm);
+}
+
+/**
+ * 数据表格重加载
+ * @param search 查询条件
+ */
+const pageTable = ref(null);  // 数据表格组件
+function tableReloadData(search: any) {
+  (pageTable.value as unknown as { loadData: (param: any) => undefined }).loadData(search);
 }
 
 const tableSelectRows = ref<any[] | undefined>([]); // 数据表格选择的行
@@ -42,7 +52,16 @@ const tableSelectRows = ref<any[] | undefined>([]); // 数据表格选择的行
  * 操作按钮点击事件
  */
 function buttonClick(buttonItem: ButtonItem, event: Event) {
-  handle(buttonItem, event, tableSelectRows.value);
+  const param = {
+    tableSelectRows: tableSelectRows.value,
+    buttonItem,
+    event,
+    page: {
+      tableReloadData,
+      $_buttonClickEvent: () => emit('buttonClick', param)
+    }
+  } as ButtonClickHandleParam
+  buttonEventHandle(param);
 }
 
 </script>
