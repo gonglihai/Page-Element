@@ -1,6 +1,7 @@
 <template>
   <div class="page-table-container">
-    <el-table v-loading="loading" :data="tableData" border style="width: 100%" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="tableData" border style="width: 100%" @selection-change="handleSelectionChange"
+      @row-click="handleRowClick" ref="dataTable">
       <component v-for="col in config.col" :col="col" :is="colType(col.type)" ref="componentRef" />
     </el-table>
     <div class="page-table-pagination-container">
@@ -17,6 +18,7 @@ import type { Table } from './Types';
 import { colType } from "./col/Index";
 import { get } from "../util/Api";
 import { Log } from "../util/Log";
+import { showStatementFalse } from '../util/DefaultValue';
 
 // todo 存储到默认配置, 数据表格>每页显示个数选择器的选项设置	
 const defaultPageSizes = [100, 200, 300, 400];
@@ -96,6 +98,18 @@ const emit = defineEmits(['update:selectRows']);
 function handleSelectionChange(rows?: any[]) {
   emit('update:selectRows', rows);
 }
+
+const dataTable = ref();
+
+/**
+ * 行点击事件
+ */
+function handleRowClick(row: any) {
+  if (showStatementFalse(props.config.rowClickSelect)) {
+    dataTable.value.toggleRowSelection(row)
+  }
+}
+
 </script>
 <style>
 .page-table-container {

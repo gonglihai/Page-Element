@@ -1,10 +1,11 @@
 import type { EpPropMergeType } from "element-plus/es/utils"
 
 export interface Table {
-  api: string,
-  data: any[],
-  col: Col[],
-  pageSize: number[]
+  api: string,         // 动态数据数据源 api
+  data: any[],         // 静态数据
+  col: Col[],          // 列配置
+  pageSize: number[],  // 分页配置
+  rowClickSelect?: boolean // 行点击选中, 默认 true
 }
 
 export interface Col {
