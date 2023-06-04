@@ -2,7 +2,7 @@ export const DefaultConfig = {
   // 数据表格
   table: {
     pageSizes: [20, 40, 100, 200], // 页大小下拉框选项值
-    rowClickSelect: true,          // 行点击选中, (全局配置行点击选中 且 page 配置没有显示声明为false) 或 (全局配置行点击不选中 且 page 配置行选中) 时, 点击行会选中
+    rowClickSelect: true,          // 行点击选中, (全局配置行点击选中 且 page 配置没有显示声明为 false) 或 (全局配置行点击不选中 且 page 配置行选中) 时, 点击行会选中
   },
 
   // 杂项
