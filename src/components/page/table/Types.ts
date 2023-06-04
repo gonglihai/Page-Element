@@ -4,7 +4,7 @@ export interface Table {
   api: string,         // 动态数据数据源 api
   data: any[],         // 静态数据
   col: Col[],          // 列配置
-  pageSize: number[],  // 分页配置
+  pageSizes: number[],  // 分页配置
   rowClickSelect?: boolean // 行点击选中, 默认 true
 }
 

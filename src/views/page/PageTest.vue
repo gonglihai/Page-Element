@@ -76,6 +76,8 @@ const config = ref({
     //   { id: '1', name: '张三', cdate: '2023-05-02 20:00:00' },
     //   { id: '1', name: '李四', cdate: null }
     // ],
+    // pageSizes: [400],
+    // rowClickSelect: false,
     col: [
       { type: 'selection' },
       { type: 'index' },

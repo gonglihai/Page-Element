@@ -1,9 +1,13 @@
 // id 工具类
 
-// todo 存储到全局默认配置中
-let defaultIdsType = "array";         // ids 表现形式, "string" 指定分隔符 (defaultIdsStringDelimiter) 分隔的字符串, "array" 数组
-let defaultIdsStringDelimiter = ',';  // 当 ids 表现形式为 "string" 时, 分隔的分隔符, 默认为 英文逗号 (,)
-let defaultIdFieldName = 'id';        // 对象数组中, 代表 id 字段的字段名
+import { DefaultConfig } from "../DefaultConfig";
+
+// ids 表现形式, "string" 指定分隔符 (defaultIdsStringDelimiter) 分隔的字符串, "array" 数组
+const defaultIdsType = DefaultConfig.other.id.idsType;
+// 当 ids 表现形式为 "string" 时, 分隔的分隔符
+const defaultIdsStringDelimiter = DefaultConfig.other.id.idsStringDelimiter;
+// 对象数组中, 代表 id 字段的字段名
+const defaultIdFieldName = DefaultConfig.other.id.idFieldName;
 
 export function toIds(array: any[] | undefined) {
   switch (defaultIdsType) {

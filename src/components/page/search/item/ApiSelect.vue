@@ -56,7 +56,7 @@ function setOptions() {
   }
 
   // api 获取不到, 从 配置的静态中获取
-  // todo 同 api 响应缓存
+  // todo [优化] 同 api 响应缓存
   if (props.searchItem.options) {
     options.value = props.searchItem.options
     setCheckValue(props.searchItem.options);
