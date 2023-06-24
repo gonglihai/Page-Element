@@ -27,7 +27,7 @@ const config = ref({
         // 从 api 中获取到的选项数据
         // 当 api 请求数据未完成时, 重置事件, 此时 options 为 null
         if (options && options.length) {
-          return options[0].id
+          return options[0].id;
         }
         return null;
       }
@@ -53,7 +53,7 @@ const config = ref({
       name: '时间范围',
       field: ['timeRangeT1', 'timeRangeT2'],
       default() {
-        return ["00:00:00", "12:00:00"]
+        return ["00:00:00", "12:00:00"];
       }
     },
     {
@@ -100,9 +100,11 @@ const config = ref({
           { icon: 'Operation', name: '自定义', event: 'custom', color: "success" }
         ]
       },
+      { type: 'img', field: 'avatar', name: '图片', width: 100, height: 100 },
+      { type: 'imgs', field: 'avatars', name: '图片(多)' },
+      { type: 'video', field: 'video1', name: '视频' }
     ]
   },
-
 } as Config)
 
 
