@@ -4,6 +4,7 @@ import ColIndex from "./ColIndex.vue";
 import ColSelection from "./ColSelection.vue";
 import ColButton from "./ColButton.vue";
 import ColFriendTime from "./ColFriendTime.vue";
+import Tag from "./ColTag.vue";
 
 export const ColTypeMapping: Map<String, Component> = new Map([
   ['default', Col] as [String, Component],
@@ -12,6 +13,7 @@ export const ColTypeMapping: Map<String, Component> = new Map([
   ['selection', ColSelection],
   ['button', ColButton],
   ['friend-time', ColFriendTime],
+  ['tag', Tag]
 ]);
 
 /**

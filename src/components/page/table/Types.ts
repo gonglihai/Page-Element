@@ -16,20 +16,15 @@ export interface Col {
   align: EpPropMergeType<StringConstructor, "left" | "center" | "right", unknown> | undefined // 水平对齐
 }
 
-export enum ColType {
-  Index,        // 序号
-  Text,         // 文本
-  CheckBox,     // 选择框
-  Tag,          // 标签
-  FirendTime,   // 友好时间
-  RichText,     // 富文本
-  Img,          // 图片
-  File,         // 文件
-  Button,        // 按钮
-}
-
+// 列水平对齐
 export enum ColAlign {
   Center,
   Left,
   Right
+}
+
+// 标签配置
+export interface Tag {
+  name: string,
+  color: EpPropMergeType<StringConstructor, "" | "success" | "warning" | "info" | "danger", unknown> | undefined
 }

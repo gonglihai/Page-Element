@@ -1,4 +1,4 @@
-<!-- 默认列, 文本 -->
+<!-- 文本 -->
 <template>
   <el-table-column :prop="col.field" :label="col.name" :width="col.width" :align="col.align" />
 </template>

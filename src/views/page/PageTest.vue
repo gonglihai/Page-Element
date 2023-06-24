@@ -68,7 +68,7 @@ const config = ref({
     { icon: 'Edit', name: '编辑', event: 'edit', color: "danger", selectCount: 1, minCount: 1, maxCount: 1, },
     { icon: 'Delete', name: '删除', event: 'inner-delete', color: "warning", api: 'api/delete.json' },
     { icon: 'Delete', name: '删除2', event: 'inner-delete', color: "warning", api: 'api/deleteFail.json' },
-    {  name: '自定义', event: 'custom' }
+    { name: '自定义', event: 'custom' }
   ],
   table: {
     api: 'api/DataTable.json',
@@ -83,6 +83,15 @@ const config = ref({
       { type: 'index' },
       { field: 'id', name: 'ID' },
       { field: 'name', name: '姓名' },
+      {
+        type: 'tag', field: 'status', name: '状态', tag: [
+          { color: 'success', name: '状态1' },
+          { color: 'info', name: '状态2' },
+          { color: 'warning', name: '状态3' },
+          { color: 'danger', name: '状态4' },
+          { name: '状态5' }
+        ]
+      },
       { type: 'friend-time', field: 'cdate', name: '创建时间' },
       {
         type: 'button', button: [
