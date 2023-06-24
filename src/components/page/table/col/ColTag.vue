@@ -18,7 +18,7 @@ const props = defineProps<{
 function getType(scope: any): Tag {
   const colValue = scope.row[props.col.field];
   const tag = props.col.tag[colValue];
-  if (!tag) {
+  if (!tag && scope.$index != -1) {
     Log.error("col-tag 未知的标签类型, 列配置:", props.col, "数据行:", scope)
     return { name: '未知', color: 'danger' };
   }
