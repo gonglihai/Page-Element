@@ -5,7 +5,7 @@ export interface Table {
   data: any[] // 静态数据
   col: Col[] // 列配置
   pageSizes: number[] // 分页配置
-  rowClickSelect?: boolean // 行点击选中, 默认 true
+  rowClickSelect?: boolean, // 行点击选中, 默认 true
 }
 
 export interface Col {
