@@ -1,6 +1,6 @@
 <template>
   <div class="page-search-container">
-    <div v-for="(searchItem, searchIndex) in config" class="page-search-item-container">
+    <div v-for="searchItem in config" :key="searchItem.field" class="page-search-item-container">
       <div class="page-search-label">
         {{ searchItem.name }}
       </div>

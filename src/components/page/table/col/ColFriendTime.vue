@@ -7,11 +7,11 @@
   </el-table-column>
 </template>
 <script setup lang="ts">
-import FriendTime from "./FriendTime.vue";
-import type { Col } from '../Types';
-import {defaultValue} from "../../util/DefaultValue";
+import FriendTime from './FriendTime.vue'
+import type { Col } from '../Types'
+import { defaultValue } from '../../util/DefaultValue'
 
 const props = defineProps<{
   col: Col
-}>();
+}>()
 </script>

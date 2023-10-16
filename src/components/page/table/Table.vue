@@ -2,7 +2,8 @@
   <div class="page-table-container">
     <el-table v-loading="loading" :data="tableData" border style="width: 100%" @selection-change="handleSelectionChange"
       @row-click="handleRowClick" ref="dataTable">
-      <component v-for="col in config.col" :col="col" :is="colType(col.type)" ref="componentRef" />
+      <component v-for="(col, index) in config.col" :key="col.field ? col.field + '_' + index : index" :col="col"
+        :is="colType(col)" ref="componentRef" />
     </el-table>
     <div class="page-table-pagination-container">
       <el-pagination v-model:current-page="page.pageNumber" v-model:page-size="page.pageSize" :page-sizes="pageSizes"

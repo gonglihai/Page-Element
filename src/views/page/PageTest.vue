@@ -102,7 +102,25 @@ const config = ref({
       },
       { type: 'img', field: 'avatar', name: '图片', width: 100, height: 100 },
       { type: 'imgs', field: 'avatars', name: '图片(多)' },
-      { type: 'video', field: 'video1', name: '视频' }
+      { type: 'switch', field: 'switch', name: '开关', api: 'api/ApiSelect.json' },
+      {
+        name: '多级表头', children: [
+          { field: 'children1', name: '多级1' },
+          { field: 'children2', name: '多级2' },
+          {
+            name: '多级表头2', children: [
+              { field: 'switch', name: '多级1', type: 'switch' },
+              { field: 'children2', name: '多级2' },
+              {
+                name: '多级表头3', children: [
+                  { field: 'children1', name: '多级1' },
+                  { field: 'children2', name: '多级2' },
+                ]
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
 } as Config)

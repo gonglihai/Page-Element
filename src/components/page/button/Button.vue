@@ -1,6 +1,6 @@
 <template>
   <div class="p-button-container">
-    <el-button v-for="buttonItem in config" :type="buttonItem.color" :icon="transformToIconComponent(buttonItem.icon)"
+    <el-button v-for="buttonItem in config" :key="buttonItem.event" :type="buttonItem.color" :icon="transformToIconComponent(buttonItem.icon)"
       @click="onClick(buttonItem, $event)">
       {{ buttonItem.name }}
     </el-button>

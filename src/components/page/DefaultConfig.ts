@@ -5,8 +5,8 @@ export const DefaultConfig = {
     rowClickSelect: true,           // 行点击选中, (全局配置行点击选中 且 page 配置没有显示声明为 false) 或 (全局配置行点击不选中 且 page 配置行选中) 时, 点击行会选中
     col: {                          // 列配置
       img: {                        // 图片列
-        width: 70,                  // 图片宽度
-        height: 70,                 // 图片高度
+        width: 50,                  // 图片宽度
+        height: 50,                 // 图片高度
         padding: 25                 // 图片内边距
       }
     }
@@ -18,6 +18,7 @@ export const DefaultConfig = {
     friendTime: {
       showMode: false,              // 格式化时间显示方式, true 鼠标 hover 显示具体时间, false 点击切换显示具体时间
       defaultShow: true,            // 默认显示方式, true 显示友好时间, false 显示 YYYY-MM-DD HH:mm:ss 时间
+      format: 'YYYY-MM-DD HH:mm:ss',//
     },
     // id 相关
     id: {

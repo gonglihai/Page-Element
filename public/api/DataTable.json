@@ -7,7 +7,10 @@
       "status": 0,
       "cdate": "2023-05-03 00:00:00",
       "avatar": "http://iph.href.lu/150x200",
-      "avatars": "http://iph.href.lu/151x200,http://iph.href.lu/152x200,http://iph.href.lu/153x200,http://iph.href.lu/154x200"
+      "avatars": "http://iph.href.lu/151x200,http://iph.href.lu/152x200,http://iph.href.lu/153x200,http://iph.href.lu/154x200",
+      "switch": true,
+      "children1": "1-1",
+      "children2": "1-2"
     },
     {
       "id": "2",
@@ -15,7 +18,10 @@
       "status": 1,
       "cdate": "2023-05-04 00:00:00",
       "avatar": "http://iph.href.lu/100x100",
-      "avatars": "http://iph.href.lu/150x600,http://iph.href.lu/150x202,http://iph.href.lu/150x203,http://iph.href.lu/150x204"
+      "avatars": "http://iph.href.lu/150x600,http://iph.href.lu/150x202,http://iph.href.lu/150x203,http://iph.href.lu/150x204",
+      "switch": false,
+      "children1": "2-1",
+      "children2": "2-2"
     },
     {
       "id": "3",
@@ -23,7 +29,10 @@
       "status": 2,
       "cdate": "2023-05-05 00:00:00",
       "avatar": null,
-      "avatars": null
+      "avatars": null,
+      "switch": true,
+      "children1": "3-1",
+      "children2": "3-2"
     },
     {
       "id": "4",
@@ -31,7 +40,10 @@
       "status": 3,
       "cdate": "2023-05-06 00:00:00",
       "avatar": "http://iph.href.lu/100x100",
-      "avatars": "http://iph.href.lu/150x201,http://iph.href.lu/150x202,http://iph.href.lu/150x203,http://iph.href.lu/150x204"
+      "avatars": "http://iph.href.lu/150x201,http://iph.href.lu/150x202,http://iph.href.lu/150x203,http://iph.href.lu/150x204",
+      "switch": false,
+      "children1": "4-1",
+      "children2": "4-2"
     },
     {
       "id": "5",
@@ -39,7 +51,10 @@
       "status": 4,
       "cdate": "2023-05-07 00:00:00",
       "avatar": "http://iph.href.lu/100x100",
-      "avatars": "http://iph.href.lu/150x201,http://iph.href.lu/150x202,http://iph.href.lu/150x203,http://iph.href.lu/150x204"
+      "avatars": "http://iph.href.lu/150x201,http://iph.href.lu/150x202,http://iph.href.lu/150x203,http://iph.href.lu/150x204",
+      "switch": false,
+      "children1": "5-1",
+      "children2": "5-2"
     }
   ],
   "total": 184

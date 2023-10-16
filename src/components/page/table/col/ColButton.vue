@@ -2,7 +2,8 @@
 <template>
   <el-table-column :width="col.width" :align="col.align" :label="defaultValue(col.name, '操作')">
     <template #default>
-      <el-button v-for="button in col.button" :type="button.color" :icon="transformToIconComponent(button.icon)">
+      <el-button v-for="button in col.button" :key="button.event" size="small" :type="button.color"
+        :icon="transformToIconComponent(button.icon)">
         {{ button.name }}
       </el-button>
     </template>
