@@ -2,7 +2,7 @@
 <template>
   <el-table-column :width="defaultValue(col.width, 70)" :align="defaultValue(col.align, 'center')" :label="col.name">
     <template #default="scope">
-      <el-switch v-model="scope.row[col.field]" :loading="loadding" :before-change="beforeChange" />
+      <el-switch v-model="scope.row[col.field]" :loading="loadding" :before-change="beforeChange" @click.stop/>
     </template>
   </el-table-column>
 </template>
