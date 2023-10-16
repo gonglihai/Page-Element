@@ -120,7 +120,8 @@ const config = ref({
             ]
           }
         ]
-      }
+      },
+      
     ]
   },
 } as Config)

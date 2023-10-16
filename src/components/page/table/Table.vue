@@ -9,6 +9,7 @@
       <el-pagination v-model:current-page="page.pageNumber" v-model:page-size="page.pageSize" :page-sizes="pageSizes"
         layout="total, sizes, prev, pager, next, jumper" :total="total" @size-change="sizeChange"
         @current-change="pageChange" />
+      <col-show :col="props.config.col"></col-show>
     </div>
   </div>
 </template>
@@ -20,7 +21,7 @@ import { get } from "../util/Api";
 import { Log } from "../util/Log";
 import { showStatementFalse, defaultValue } from '../util/DefaultValue';
 import { DefaultConfig } from '../DefaultConfig';
-
+import ColShow from './show/ColShow.vue';
 
 const props = defineProps<{
   config: Table,
