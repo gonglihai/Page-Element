@@ -2,7 +2,7 @@
 <template>
   <el-table-column :label="col.name">
     <template v-for="(childrenCol, index) in col.children" :key="'leve_col_' + index">
-      <component :col="childrenCol" :is="colType(childrenCol)" ref="componentRef" />
+      <component v-if="childrenCol.show != false" :col="childrenCol" :is="colType(childrenCol)" ref="componentRef" />
     </template>
   </el-table-column>
 </template>

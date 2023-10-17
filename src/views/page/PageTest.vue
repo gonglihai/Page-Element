@@ -104,24 +104,36 @@ const config = ref({
       { type: 'imgs', field: 'avatars', name: '图片(多)' },
       { type: 'switch', field: 'switch', name: '开关', api: 'api/ApiSelect.json' },
       {
-        name: '多级表头', children: [
-          { field: 'children1', name: '多级1' },
-          { field: 'children2', name: '多级2' },
+        name: '多级表头1', children: [
+          { field: 'children1', name: '多级1-1' },
           {
-            name: '多级表头2', children: [
-              { field: 'switch', name: '多级1', type: 'switch' },
-              { field: 'children2', name: '多级2' },
+            name: '多级表头1-2', children: [
+              { field: 'switch', name: '多级1-2-1', type: 'switch' },
+              { field: 'children2', name: '多级1-2-2' },
               {
-                name: '多级表头3', children: [
-                  { field: 'children1', name: '多级1' },
-                  { field: 'children2', name: '多级2' },
+                name: '多级表头1-2-3', children: [
+                  { field: 'children1', name: '多级1-2-3-1' },
+                  {
+                    field: 'children2', name: '多级1-2-3-2', children: [{
+                      name: '多级表头1-2', children: [
+                        { field: 'switch', name: '多级1-2-1', type: 'switch' },
+                        { field: 'children2', name: '多级1-2-2' },
+                        {
+                          name: '多级表头1-2-3', children: [
+                            { field: 'children1', name: '多级1-2-3-1' },
+                            { field: 'children2', name: '多级1-2-3-2' },
+                          ]
+                        }
+                      ]
+                    },]
+                  },
                 ]
               }
             ]
-          }
+          },
+          { field: 'children2', name: '多级2', show: true },
         ]
       },
-      
     ]
   },
 } as Config)

@@ -5,7 +5,7 @@ export interface Table {
   data: any[] // 静态数据
   col: Col[] // 列配置
   pageSizes: number[] // 分页配置
-  rowClickSelect?: boolean, // 行点击选中, 默认 true
+  rowClickSelect?: boolean // 行点击选中, 默认 true
 }
 
 export interface Col {
@@ -15,6 +15,7 @@ export interface Col {
   width?: number // 宽度
   align?: EpPropMergeType<StringConstructor, 'left' | 'center' | 'right', unknown> // 水平对齐
   children?: Col[] // 子级表头
+  show?: boolean // 是否显示
 }
 
 export interface ColSwitch extends Col {

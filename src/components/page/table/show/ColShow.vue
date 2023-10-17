@@ -5,13 +5,15 @@
     </template>
     <div style="width: 100%; display: flex;flex-direction:column;align-items:center;  ">
       <div style="margin-bottom: 0.5rem;max-height: 50vh; overflow: auto;">
-        <col-show-item v-for="(colItem, key) in col" :key="key" :col="colItem"></col-show-item>
+        <col-show-item v-for="(colItem, key) in col" :key="key" :col="colItem"
+          @change="(col, show) => onShowChange(colItem, show)" ref="childrenColShowNodes"></col-show-item>
       </div>
       <div style="width: 100%">
         <el-button-group>
-          <el-button size="small">全显</el-button>
-          <el-button size="small">全不显</el-button>
+          <el-button size="small" @click="allShowSet(true)">全显</el-button>
+          <el-button size="small" @click="allShowSet(false)">全不显</el-button>
           <el-button size="small">反显</el-button>
+          <el-button size="small">重置</el-button>
         </el-button-group>
       </div>
     </div>
@@ -20,7 +22,7 @@
 <script setup lang="ts">
 import { Operation, } from '@element-plus/icons-vue';
 import type { Col } from '../Types';
-import { defineProps, computed } from 'vue';
+import { defineProps, computed, ref } from 'vue';
 import ColShowItem from './ColShowItem.vue';
 
 const props = defineProps<{
@@ -45,5 +47,29 @@ function getTreeDeep(nodes: any[]) {
     }
   })
   return deep;
+}
+
+/**
+ * 子级改变
+ * @param col 子级列
+ * @param show 显示状态
+ */
+function onShowChange(col: Col, show: boolean) {
+  col.show = show;
+}
+
+const childrenColShowNodes = ref([]);
+
+/**
+ * 全选/全不选
+ * @param show true 全选, false 全不选
+ */
+function allShowSet(show: boolean) {
+  if (!childrenColShowNodes.value || !childrenColShowNodes.value.length) {
+    return;
+  }
+  childrenColShowNodes.value.forEach((childrenColShowNode: { parentShowChange: (show: boolean) => void; }) => {
+    childrenColShowNode.parentShowChange(show);
+  });
 }
 </script>
