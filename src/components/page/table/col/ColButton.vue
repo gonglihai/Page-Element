@@ -1,6 +1,7 @@
 <!-- 操作按钮列 -->
 <template>
-  <el-table-column :fixed="col.fixed" :width="col.width" :align="col.align" :label="defaultValue(col.name, '操作')">
+  <el-table-column :fixed="col.fixed" :width="col.width" :align="defaultValue(col.align, 'center')"
+    :label="defaultValue(col.name, '操作')">
     <template #default>
       <el-button v-for="button in col.button" :key="button.event" size="small" :type="button.color"
         :icon="transformToIconComponent(button.icon)">
@@ -20,3 +21,8 @@ const props = defineProps<{
 }>();
 
 </script>
+<style scoped>
+.el-button+.el-button {
+  margin-left: 8px;
+}
+</style>

@@ -98,7 +98,7 @@ const config = ref({
           { icon: 'Edit', name: '编辑', event: 'inner-edit', color: "danger" },
           { icon: 'Delete', name: '删除', event: 'inner-delete', color: "warning" },
           { icon: 'Operation', name: '自定义', event: 'custom', color: "success" }
-        ], fixed: 'right', width: 200
+        ], fixed: 'right', width: 250
       },
       { type: 'img', field: 'avatar', name: '图片', width: 100, height: 100 },
       { type: 'imgs', field: 'avatars', name: '图片(多)' },
