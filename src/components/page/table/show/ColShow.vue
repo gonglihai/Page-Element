@@ -1,7 +1,7 @@
 <template>
   <el-popover :width="popoverWidth" trigger="click">
     <template #reference>
-      <el-button style="margin-left: 0.5rem" :icon="Operation" title="切换显示列"></el-button>
+      <el-button style="margin-left: 0.5rem" :icon="Operation" title="切换显示列">显示列</el-button>
     </template>
     <div style="width: 100%; display: flex;flex-direction:column;align-items:center;  ">
       <div style="margin-bottom: 0.5rem;max-height: 50vh; overflow: auto;">
@@ -12,7 +12,7 @@
         <el-button-group>
           <el-button size="small" @click="allShowSet(true)">全显</el-button>
           <el-button size="small" @click="allShowSet(false)">全不显</el-button>
-          <el-button size="small">反显</el-button>
+          <el-button size="small" @click="reverseShow(col)">反显</el-button>
           <el-button size="small">重置</el-button>
         </el-button-group>
       </div>
@@ -24,7 +24,7 @@ import { Operation, } from '@element-plus/icons-vue';
 import type { Col } from '../Types';
 import { defineProps, computed, ref } from 'vue';
 import ColShowItem from './ColShowItem.vue';
-
+import { showStatementFalse } from '../../util/DefaultValue';
 const props = defineProps<{
   col: Col[],
 }>()
@@ -71,5 +71,31 @@ function allShowSet(show: boolean) {
   childrenColShowNodes.value.forEach((childrenColShowNode: { parentShowChange: (show: boolean) => void; }) => {
     childrenColShowNode.parentShowChange(show);
   });
+}
+
+/**
+ * 反选
+ */
+function reverseShow(cols: Col[]) {
+  let parentShow = false;
+  for (let i = 0; i < cols.length; i++) {
+    const col = cols[i];
+    // 子级不存在, 直接设置反选
+    if (!col.children || !col.children.length) {
+      const thisShow = !showStatementFalse(col.show);
+      col.show = thisShow;
+      if (thisShow) {
+        parentShow = true;
+      }
+      continue;
+    }
+    // 存在子级, 本级状态, 从子级获取
+    const thisShow = reverseShow(col.children);
+    col.show = thisShow;
+    if (thisShow) {
+      parentShow = true;
+    }
+  }
+  return parentShow;
 }
 </script>
