@@ -7,11 +7,11 @@
   </el-table-column>
 </template>
 <script setup lang="ts">
-import type { Col, Tag } from '../Types';
+import type { Col } from '../Types';
 import { colType } from "../col/Index";
 
 const props = defineProps<{
-  col: Col & { tag: Tag[] }
+  col: Col
 }>();
 
 </script>
