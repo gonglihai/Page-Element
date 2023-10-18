@@ -1,11 +1,12 @@
+<!-- 对 el-switch 包装, 支持 api 请求 -->
 <template>
   <el-switch :model-value="modelValue" :loading="loadding" :before-change="beforeChange" @click.stop />
 </template>
 <script setup lang="ts">
-import { post } from '../../../util/Api';
-import { defaultValue } from "../../../util/DefaultValue";
+import { post } from '../util/Api';
+import { defaultValue } from "../util/DefaultValue";
 import { ref, defineEmits } from 'vue';
-import { DefaultConfig } from '../../../DefaultConfig';
+import { DefaultConfig } from '../DefaultConfig';
 
 const props = defineProps<{
   api?: string | undefined,
@@ -23,22 +24,23 @@ const emits = defineEmits<{
 function beforeChange() {
   loadding.value = true;
   return new Promise<boolean>((success, fail) => {
+    const changeValue = !props.modelValue;
+
     if (!props.api) {
       loadding.value = false;
       success(true);
+      emits('update:modelValue', changeValue);
       return;
     }
 
     const idField = defaultValue(props.idField, DefaultConfig.other.id.idFieldName) as string;
-    console.log(props.modelValue)
-    const value = !props.modelValue;
     // api post 请求
     post(props.api, {
       [idField]: props.id,
-      value
+      value: changeValue
     }).then(() => {
       success(true);
-      emits('update:modelValue', value);
+      emits('update:modelValue', changeValue);
     })
       .catch(() => fail(false))
       .finally(() => {

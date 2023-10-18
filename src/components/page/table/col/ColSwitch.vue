@@ -12,7 +12,7 @@ import type { ColSwitch } from '../Types';
 import { defaultValue } from "../../util/DefaultValue";
 import { computed } from 'vue';
 import { DefaultConfig } from '../../DefaultConfig';
-import ApiSwitch from "./pack/ApiSwitch.vue";
+import ApiSwitch from "../../strong/ApiSwitch.vue";
 
 const props = defineProps<{
   col: ColSwitch

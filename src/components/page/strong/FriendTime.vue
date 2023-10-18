@@ -1,3 +1,4 @@
+<!-- 友好时间 -->
 <template>
   <!-- 显示模式1, 默认显示友好时间, 鼠标 hover 显示具体时间 -->
   <el-tooltip v-if="showMode" effect="dark" :content="time" placement="top" :show-after="300" :show-arrow="false"
@@ -13,8 +14,8 @@
 </template>
 <script setup lang="ts">
 import { defineProps, ref, computed, withDefaults, defineEmits } from 'vue';
-import moment from '../../util/TimeUtil'
-import { DefaultConfig } from '../../DefaultConfig';
+import moment from '../util/TimeUtil'
+import { DefaultConfig } from '../DefaultConfig';
 
 const props = withDefaults(defineProps<{
   time: any,

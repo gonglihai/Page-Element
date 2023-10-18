@@ -8,7 +8,7 @@
   </el-table-column>
 </template>
 <script setup lang="ts">
-import FriendTime from './FriendTime.vue'
+import FriendTime from '../../strong/FriendTime.vue'
 import type { Col } from '../Types'
 import { defaultValue } from '../../util/DefaultValue'
 
