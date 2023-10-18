@@ -5,7 +5,7 @@
  * @param candidate 候选值
  * @returns 
  */
-export function defaultValue(value: any, candidate: any): any {
+export function defaultValue<T>(value: T, candidate: T): T {
   return value ? value : candidate;
 }
 

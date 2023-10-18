@@ -20,7 +20,7 @@ export interface Col {
 
 export interface ColSwitch extends Col {
   api?: string // API 请求地址
-  idField: 'id'
+  idField: string // id 字段名
 }
 
 // 列水平对齐
