@@ -1,6 +1,6 @@
 <!-- 对 el-switch 包装, 支持 api 请求 -->
 <template>
-  <el-switch :model-value="modelValue" :loading="loadding" :before-change="beforeChange" @click.stop />
+  <el-switch :model-value="modelValue" :loading="loadding" :before-change="beforeChange" @click="click" />
 </template>
 <script setup lang="ts">
 import { post } from '../util/Api';
@@ -18,7 +18,8 @@ const props = defineProps<{
 const loadding = ref(false);
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void
+  (e: 'update:modelValue', value: boolean): void,
+  (e: 'click', $event: Event): void
 }>()
 
 function beforeChange() {
@@ -47,5 +48,9 @@ function beforeChange() {
         loadding.value = false;
       })
   })
+}
+
+function click($event: Event) {
+  emits('click', $event)
 }
 </script>
