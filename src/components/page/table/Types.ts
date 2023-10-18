@@ -15,19 +15,13 @@ export interface Col {
   width?: number // 宽度
   align?: EpPropMergeType<StringConstructor, 'left' | 'center' | 'right', unknown> // 水平对齐
   children?: Col[] // 子级表头
-  show?: boolean // 是否显示
+  show?: boolean, // 是否显示
+  fixed?: EpPropMergeType<StringConstructor, 'left' | 'right', unknown>
 }
 
 export interface ColSwitch extends Col {
   api?: string // API 请求地址
   idField: string // id 字段名
-}
-
-// 列水平对齐
-export enum ColAlign {
-  Center,
-  Left,
-  Right
 }
 
 // 标签配置

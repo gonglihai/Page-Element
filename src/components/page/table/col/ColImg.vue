@@ -1,7 +1,7 @@
 <!-- 图片 -->
 <!-- 标签列 -->
 <template>
-  <el-table-column
+  <el-table-column :fixed="col.fixed"
     :width="defaultValue(col.width, DefaultConfig.table.col.img.width + DefaultConfig.table.col.img.padding)"
     :align="defaultValue(col.align, 'center')" :label="defaultValue(col.name, '图片')">
     <template #default="scope">

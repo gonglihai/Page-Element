@@ -1,6 +1,6 @@
 <!-- 标签列 -->
 <template>
-  <el-table-column sortable :prop="col.field" :width="defaultValue(col.width, 80)" :align="defaultValue(col.align, 'center')" :label="col.name">
+  <el-table-column sortable :fixed="col.fixed" :prop="col.field" :width="defaultValue(col.width, 80)" :align="defaultValue(col.align, 'center')" :label="col.name">
     <template #default="scope">
       <el-tag :type="getType(scope).color">{{ getType(scope).name }}</el-tag>
     </template>

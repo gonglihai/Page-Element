@@ -1,6 +1,6 @@
 <!-- 序号列 -->
 <template>
-  <el-table-column type="index" :label="defaultValue(col.name, '#')" :width="defaultValue(col.width, 40)"
+  <el-table-column :fixed="col.fixed" type="index" :label="defaultValue(col.name, '#')" :width="defaultValue(col.width, 40)"
     :align="defaultValue(col.align, 'center')" />
 </template>
 <script setup lang="ts">

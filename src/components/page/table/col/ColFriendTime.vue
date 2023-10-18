@@ -1,6 +1,6 @@
 <!-- 友好时间列 -->
 <template>
-  <el-table-column sortable :prop="col.field" :width="defaultValue(col.width, 95)"
+  <el-table-column :fixed="col.fixed" sortable :prop="col.field" :width="defaultValue(col.width, 95)"
     :align="defaultValue(col.align, 'center')" :label="col.name">
     <template #default="scope">
       <FriendTime @click.stop v-if="col.field && scope.row[col.field]" :time="scope.row[col.field]"></FriendTime>

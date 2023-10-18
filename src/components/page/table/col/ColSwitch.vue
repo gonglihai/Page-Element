@@ -1,6 +1,6 @@
 <!-- 开关列 -->
 <template>
-  <el-table-column sortable :prop="col.field" :width="defaultValue(col.width, 70)"
+  <el-table-column sortable :fixed="col.fixed" :prop="col.field" :width="defaultValue(col.width, 70)"
     :align="defaultValue(col.align, 'center')" :label="col.name">
     <template #default="scope">
       <api-switch :api="col.api" :id="scope.row[idField]" :idField="idField" v-model="scope.row[col.field]"

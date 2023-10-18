@@ -1,6 +1,6 @@
 <!-- checkbox 列 -->
 <template>
-  <el-table-column type="selection" :width="defaultValue(col.width, 40)"
+  <el-table-column :fixed="col.fixed" type="selection" :width="defaultValue(col.width, 40)"
     :align="defaultValue(col.align, 'center')" />
 </template>
 <script setup lang="ts">

@@ -79,10 +79,10 @@ const config = ref({
     // pageSizes: [400],
     // rowClickSelect: false,
     col: [
-      { type: 'selection' },
+      { type: 'selection', fixed: 'left' },
       { type: 'index' },
       { field: 'id', name: 'ID' },
-      { field: 'name', name: '姓名' },
+      { field: 'name', name: '姓名', fixed: 'left' },
       {
         type: 'tag', field: 'status', name: '状态', tag: [
           { color: 'success', name: '状态1' },
@@ -98,7 +98,7 @@ const config = ref({
           { icon: 'Edit', name: '编辑', event: 'inner-edit', color: "danger" },
           { icon: 'Delete', name: '删除', event: 'inner-delete', color: "warning" },
           { icon: 'Operation', name: '自定义', event: 'custom', color: "success" }
-        ]
+        ], fixed: 'right', width: 200
       },
       { type: 'img', field: 'avatar', name: '图片', width: 100, height: 100 },
       { type: 'imgs', field: 'avatars', name: '图片(多)' },
@@ -136,6 +136,9 @@ const config = ref({
       },
     ]
   },
+  form: {
+
+  }
 } as Config)
 
 
