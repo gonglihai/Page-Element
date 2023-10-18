@@ -17,8 +17,8 @@ export const DefaultConfig = {
     // 友好时间
     friendTime: {
       showMode: false,              // 格式化时间显示方式, true 鼠标 hover 显示具体时间, false 点击切换显示具体时间
-      defaultShow: true,            // 默认显示方式, true 显示友好时间, false 显示 YYYY-MM-DD HH:mm:ss 时间
-      format: 'YYYY-MM-DD HH:mm:ss',//
+      defaultShow: true,            // 默认显示方式, true 显示友好时间, false 显示 ${format} 格式的时间
+      format: 'YYYY-MM-DD HH:mm:ss',// 默认格式化时间
     },
     // id 相关
     id: {
