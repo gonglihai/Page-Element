@@ -13,7 +13,8 @@
           <el-button size="small" @click="allShowSet(true)">全显</el-button>
           <el-button size="small" @click="allShowSet(false)">全不显</el-button>
           <el-button size="small" @click="reverseShow(col)">反显</el-button>
-          <el-button size="small">重置</el-button>
+          <!-- todo 后期实现 -->
+          <!-- <el-button size="small">重置</el-button> -->
         </el-button-group>
       </div>
     </div>

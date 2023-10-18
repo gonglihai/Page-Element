@@ -7,6 +7,7 @@ import { post } from '../util/Api';
 import { defaultValue } from "../util/DefaultValue";
 import { ref, defineEmits } from 'vue';
 import { DefaultConfig } from '../DefaultConfig';
+import { Log } from '../util/Log';
 
 const props = defineProps<{
   api?: string | undefined,
@@ -35,11 +36,13 @@ function beforeChange() {
     }
 
     const idField = defaultValue(props.idField, DefaultConfig.other.id.idFieldName) as string;
-    // api post 请求
-    post(props.api, {
+    const requestParams = {
       [idField]: props.id,
       value: changeValue
-    }).then(() => {
+    };
+    Log.info('ApiSwitch', '切换状态 请求:', props.api, '参数:', requestParams);
+    // api post 请求
+    post(props.api, requestParams).then(() => {
       success(true);
       emits('update:modelValue', changeValue);
     })
