@@ -21,7 +21,7 @@ import { defineProps, withDefaults, defineEmits, computed } from 'vue';
 import { useApi } from './useApi';
 import type { EpPropMergeType } from 'element-plus/es/utils/vue/props/types';
 import { Refresh } from '@element-plus/icons-vue'
-import { toArray, toValue } from '../util/ArrayUtil'
+import { toArray } from '../util/ArrayUtil'
 import { DefaultConfig } from '../DefaultConfig';
 import { defaultValue } from '../util/DefaultValue';
 
