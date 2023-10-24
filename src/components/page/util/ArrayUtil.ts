@@ -87,7 +87,7 @@ export function toArray(
  * @param a 数组或字符串
  * @param type 值展现方式, "array", "string"
  * @param delimiter 分隔符
- * @returns type 得类型
+ * @returns type的类型
  */
 export function toValue(
   a: Array<any> | string | undefined,

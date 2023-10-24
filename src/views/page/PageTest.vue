@@ -164,6 +164,27 @@ const config = ref({
         ], multiple: true
       },
       { field: 'select2', type: 'select', name: '下拉框, api', api: 'api/ApiSelect.json' },
+      {
+        field: 'cascader1', type: 'cascader', name: '级联下拉框, options', options: [
+          {
+            "id": "1", "name": "1", children: [
+              { "id": "12", "name": "1-2", },
+              {
+                "id": "13", "name": "1-3", children: [
+                  { "id": "131", "name": "1-3-1", },
+                  { "id": "132", "name": "1-3-2", },
+                  { "id": "133", "name": "1-3-3", },
+                ]
+              },
+              { "id": "14", "name": "1-4", },
+            ]
+          },
+          { "id": "2", "name": "2", },
+          { "id": "3", "name": "3", },
+          { "id": "4", "name": "4", },
+        ], expandTrigger: 'hover', multiple: true, checkStrictly: true, emitPath: false // 多选, 不选择父级, 需要 emitPath 为 false
+      },
+      { field: 'cascader2', type: 'cascader', name: '级联下拉框, api', api: 'api/cascader.json', valueMapping: 'code', multiple: true },
     ]
   }
 } as Config)
