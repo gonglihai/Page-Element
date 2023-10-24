@@ -5,6 +5,7 @@ import { Log } from '../../util/Log'
 import { ElInput } from 'element-plus'
 import ApiRadio from '../../strong/ApiRadio.vue'
 import ApiCheckbox from '../../strong/ApiCheckbox.vue'
+import ApiSelect from '../../strong/ApiSelect.vue'
 
 /**
  * 表单项类型key 与 组件映射关系 map
@@ -13,7 +14,8 @@ export const FormItemTypeMapping: Map<String, Component> = new Map([
   ['default', ElInput], // default input 输入框
   ['input', ElInput], // input 输入框
   ['radio', ApiRadio], // 单选框
-  ['checkbox', ApiCheckbox as Component] // 选项框
+  ['checkbox', ApiCheckbox], // 选项框
+  ['select', ApiSelect as Component] // 下拉框
 ])
 
 /**

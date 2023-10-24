@@ -155,7 +155,15 @@ const config = ref({
           { id: '3', name: '选项3' }
         ]
       },
-      { field: 'checkbox2', type: 'checkbox', name: '复选框, options', api: 'api/ApiSelect.json' }
+      { field: 'checkbox2', type: 'checkbox', name: '复选框, options', api: 'api/ApiSelect.json' },
+      {
+        field: 'select1', type: 'select', name: '下拉框, options', options: [
+          { id: '1', name: '选项1' },
+          { id: '2', name: '选项2' },
+          { id: '3', name: '选项3' }
+        ], multiple: true
+      },
+      { field: 'select2', type: 'select', name: '下拉框, api', api: 'api/ApiSelect.json' },
     ]
   }
 } as Config)
