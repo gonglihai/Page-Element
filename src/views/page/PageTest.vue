@@ -137,7 +137,26 @@ const config = ref({
     ]
   },
   form: {
-
+    item: [
+      { field: 'id', name: 'ID' },
+      { field: 'name', name: '姓名' },
+      {
+        field: 'radio1', type: 'radio', name: '单选, options', options: [
+          { id: '1', name: '选项1' },
+          { id: '2', name: '选项2' },
+          { id: '3', name: '选项3' }
+        ]
+      },
+      { field: 'radio2', type: 'radio', name: '单选, api', api: 'api/ApiSelect.json' },
+      {
+        field: 'checkbox1', type: 'checkbox', name: '复选框, options', options: [
+          { id: '1', name: '选项1' },
+          { id: '2', name: '选项2' },
+          { id: '3', name: '选项3' }
+        ]
+      },
+      { field: 'checkbox2', type: 'checkbox', name: '复选框, options', api: 'api/ApiSelect.json' }
+    ]
   }
 } as Config)
 

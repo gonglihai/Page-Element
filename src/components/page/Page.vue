@@ -3,14 +3,14 @@
     <p-search v-if="config.search" :config="config.search" @reset="searchReset" @search="searchSearch"></p-search>
     <p-button v-if="config.button" :config="config.button" @click="buttonClick"></p-button>
     <p-table v-if="config.table" :config="config.table" ref="pageTable" v-model:selectRows="tableSelectRows"></p-table>
-    <p-form v-if="config.form"></p-form>
+    <p-form v-if="config.form" :form="config.form"></p-form>
   </div>
 </template>
 <script setup lang="ts">
 import PSearch from './search/Search.vue';
 import PButton from './button/Button.vue';
 import PTable from "./table/Table.vue";
-import PForm from "./form/Index.vue";
+import PForm from "./form/PForm.vue";
 import { Log } from "./util/Log";
 import type { Config } from './Config';
 import type { ButtonItem, ButtonClickHandleParam } from './button/Types';

@@ -6,7 +6,7 @@
     :align="defaultValue(col.align, 'center')" :label="defaultValue(col.name, '图片')">
     <template #default="scope">
       <!-- 单图 -->
-      <el-image v-if="col.type == 'img'" :src="imgUrl(scope)" :style="computeStyle" :preview-src-list="imgUrls(scope)"
+      <el-image @click.stop v-if="col.type == 'img'" :src="imgUrl(scope)" :style="computeStyle" :preview-src-list="imgUrls(scope)"
         preview-teleported hide-on-click-modal fit="contain">
         <template #error>
           <div class="col-img-error-slot">
@@ -17,7 +17,7 @@
 
       <!-- 多图 -->
       <template v-else-if="col.type == 'imgs'">
-        <el-image :style="computeStyle" :src="imgsUrl(scope)" :preview-src-list="imgsUrls(scope)" preview-teleported
+        <el-image @click.stop :style="computeStyle" :src="imgsUrl(scope)" :preview-src-list="imgsUrls(scope)" preview-teleported
           hide-on-click-modal :infinite="false" fit="contain">
           <template #error>
             <div class="col-img-error-slot">
