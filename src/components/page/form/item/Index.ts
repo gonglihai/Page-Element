@@ -2,7 +2,7 @@ import type { Component } from 'vue'
 import type { FormItem } from '../Types'
 import { Log } from '../../util/Log'
 
-import { ElInput, ElTimePicker } from 'element-plus'
+import { ElInput } from 'element-plus'
 import ApiRadio from '../../strong/ApiRadio.vue'
 import ApiCheckbox from '../../strong/ApiCheckbox.vue'
 import ApiSelect from '../../strong/ApiSelect.vue'
