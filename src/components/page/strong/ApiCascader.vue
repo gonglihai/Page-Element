@@ -74,7 +74,6 @@ const thisValue = computed(() => {
 })
 
 function change(value: any) {
-  console.log(value)
   const valueType = defaultValue(props.valueType, DefaultConfig.other.array.type);
   if (!value) {
     emits('update:modelValue', valueType == 'string' ? '' : [])
