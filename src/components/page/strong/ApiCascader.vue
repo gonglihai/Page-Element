@@ -74,9 +74,11 @@ const thisValue = computed(() => {
 })
 
 function change(value: any) {
+  console.log(value)
   const valueType = defaultValue(props.valueType, DefaultConfig.other.array.type);
   if (!value) {
-    return valueType == 'string' ? '' : []
+    emits('update:modelValue', valueType == 'string' ? '' : [])
+    return;
   }
   // 多选, 是个二维数组, 去除相同父级内容
   const valueSet = new Set();
@@ -89,7 +91,7 @@ function change(value: any) {
       valueSet.add(item);
     }
   })
-  const r = valueType == 'string' ? [...valueSet].join( DefaultConfig.other.array.delimiter) : [...valueSet];
+  const r = valueType == 'string' ? [...valueSet].join(DefaultConfig.other.array.delimiter) : [...valueSet];
   emits('update:modelValue', r)
 }
 </script>
