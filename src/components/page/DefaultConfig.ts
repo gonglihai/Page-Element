@@ -30,6 +30,18 @@ export const DefaultConfig = {
     array: {
       type: 'string',               // 集合呈现方式, "array" 数组, "string" 以 arrayStringDelimiter 符号分隔的字符串
       delimiter: ","                // 当 arrayType 为 "string" 时, 分隔符号
+    },
+    // 日期
+    date: {
+      showFormat: 'YYYY-MM-DD',  // 显示格式化
+      valueFormat: 'YYYY-MM-DD',     // 值格式化
+    },
+    // 日期时间
+    datetime: {
+      showFormat: 'YYYY-MM-DD HH:mm:ss',  // 显示格式化
+      showDateFormat: 'YYYY-MM-DD',     // 日期显示格式化, element 有bug, 暂时保留
+      showTimeFormat: 'HH:mm:ss',          // 时间显示格式化, element 有bug, 暂时保留
+      valueFormat: 'YYYY-MM-DD HH:mm:ss',  // 值格式化
     }
   }
 };

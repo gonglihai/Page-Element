@@ -182,9 +182,15 @@ const config = ref({
           { "id": "2", "name": "2", },
           { "id": "3", "name": "3", },
           { "id": "4", "name": "4", },
-        ], expandTrigger: 'hover', multiple: true, checkStrictly: true, emitPath: false // 多选, 不选择父级, 需要 emitPath 为 false
+        ], expandTrigger: 'hover',
+        // 多选, 不选择父级, 需要 emitPath 为 false
+        multiple: true, checkStrictly: true, emitPath: false
       },
-      { field: 'cascader2', type: 'cascader', name: '级联下拉框, api', api: 'api/cascader.json', valueMapping: 'code', multiple: true },
+      { field: 'cascader2', type: 'cascader', name: '级联下拉框, api', api: 'api/cascader.json', valueMapping: 'code' },
+      { type: 'date', field: 'date', name: '日期(年月日)' },
+      { type: 'datetime', field: 'datetime', name: '日期时间(年月日时分秒)', valueFormat: 'x' },
+      { type: 'time', field: 'date2', name: '时间' },
+
     ]
   }
 } as Config)
