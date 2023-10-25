@@ -5,9 +5,10 @@
 </template>
 <script setup lang="ts">
 import type { EpPropMergeType } from 'element-plus/es/utils';
-import { defineProps, defineEmits, ref, computed } from 'vue';
+import { defineProps, defineEmits, ref, computed, watch } from 'vue';
 import { DefaultConfig } from '../DefaultConfig';
 import { defaultValue } from '../util/DefaultValue';
+import moment from 'moment';
 
 const props = defineProps<{
   type: 'date' | 'datetime',
@@ -30,6 +31,11 @@ function change(value: string) {
   emits('update:modelValue', value);
 }
 
+// 上层 modelValue 改变, 改变本级 value
+watch(() => props.modelValue, (newValue) => {
+  thisValue.value = newValue ? moment(newValue, format.value.value).format('YYYY-MM-DD HH:mm:ss') : undefined;
+})
+
 const format = computed(() => {
   switch (props.type) {
     case 'date':
@@ -47,6 +53,4 @@ const format = computed(() => {
       };
   }
 })
-
-
 </script>

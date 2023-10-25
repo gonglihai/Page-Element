@@ -2,12 +2,13 @@ import type { Component } from 'vue'
 import type { FormItem } from '../Types'
 import { Log } from '../../util/Log'
 
-import { ElInput } from 'element-plus'
+import { ElInput, ElTimePicker } from 'element-plus'
 import ApiRadio from '../../strong/ApiRadio.vue'
 import ApiCheckbox from '../../strong/ApiCheckbox.vue'
 import ApiSelect from '../../strong/ApiSelect.vue'
 import ApiCascader from '../../strong/ApiCascader.vue'
-import DateTimePack from '../../strong/DateTimePack.vue'
+import DateTimePickerPack from '../../strong/DateTimePickerPack.vue'
+import TimePickerPack from '../../strong/TimePickerPack.vue'
 
 /**
  * 表单项类型key 与 组件映射关系 map
@@ -19,8 +20,9 @@ export const FormItemTypeMapping: Map<String, Component> = new Map([
   ['checkbox', ApiCheckbox], // 选项框
   ['select', ApiSelect], // 下拉框
   ['cascader', ApiCascader], // 级联下拉框
-  ['date', DateTimePack], // 日期选择器
-  ['datetime', DateTimePack as Component] // 日期时间选择器
+  ['date', DateTimePickerPack], // 日期选择器
+  ['datetime', DateTimePickerPack], // 日期时间选择器
+  ['time', TimePickerPack as Component] // 时间选择器
 ])
 
 /**

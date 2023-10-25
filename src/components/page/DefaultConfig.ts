@@ -33,15 +33,19 @@ export const DefaultConfig = {
     },
     // 日期
     date: {
-      showFormat: 'YYYY-MM-DD',  // 显示格式化
-      valueFormat: 'YYYY-MM-DD',     // 值格式化
+      showFormat: 'YYYY-MM-DD',       // 显示格式化
+      valueFormat: 'YYYY-MM-DD',      // 值格式化
     },
     // 日期时间
     datetime: {
-      showFormat: 'YYYY-MM-DD HH:mm:ss',  // 显示格式化
-      showDateFormat: 'YYYY-MM-DD',     // 日期显示格式化, element 有bug, 暂时保留
-      showTimeFormat: 'HH:mm:ss',          // 时间显示格式化, element 有bug, 暂时保留
-      valueFormat: 'YYYY-MM-DD HH:mm:ss',  // 值格式化
+      showFormat: 'YYYY-MM-DD HH:mm:ss',    // 显示格式化
+      showDateFormat: 'YYYY-MM-DD',         // 日期显示格式化, element 有bug, 暂时保留
+      showTimeFormat: 'HH:mm:ss',           // 时间显示格式化, element 有bug, 暂时保留
+      valueFormat: 'YYYY-MM-DD HH:mm:ss',   // 值格式化
+    },
+    // 时间
+    time: {
+      valueFormat: 'HH:mm:ss' 
     }
   }
 };

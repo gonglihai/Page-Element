@@ -188,9 +188,8 @@ const config = ref({
       },
       { field: 'cascader2', type: 'cascader', name: '级联下拉框, api', api: 'api/cascader.json', valueMapping: 'code' },
       { type: 'date', field: 'date', name: '日期(年月日)' },
-      { type: 'datetime', field: 'datetime', name: '日期时间(年月日时分秒)', valueFormat: 'x' },
-      { type: 'time', field: 'date2', name: '时间' },
-
+      { type: 'datetime', field: 'datetime', name: '日期时间(年月日时分秒)'},
+      { type: 'time', field: 'time', name: '时间' },
     ]
   }
 } as Config)
