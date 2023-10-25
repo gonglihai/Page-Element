@@ -1,5 +1,6 @@
+<!-- 对 el-date-picker 包装, 实现格式化默认值 -->
 <template>
-  <el-date-picker v-model="value1" :type="type" :placeholder="placeholder" :format="format.show"
+  <el-date-picker v-model="thisValue" :type="type" :placeholder="placeholder" :format="format.show"
     :date-format="format.date" :time-format="format.time" :value-format="format.value" @change="change" />
 </template>
 <script setup lang="ts">
@@ -21,12 +22,15 @@ const props = withDefaults(defineProps<{
 
 });
 
-const value1 = ref<string | undefined>('');
+const thisValue = ref<string | undefined>('');
 
 const emits = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
+function change(value: string) {
+  emits('update:modelValue', value);
+}
 
 const format = computed(() => {
   switch (props.type) {
@@ -46,7 +50,5 @@ const format = computed(() => {
   }
 })
 
-function change(value: string) {
-  emits('update:modelValue', value);
-}
+
 </script>
