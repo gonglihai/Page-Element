@@ -1,10 +1,12 @@
 <template>
-  <el-select :popper-class="'icon-select'" :model-value="modelValue" @change="change" clearable filterable>
+  <el-select :size="size" :popper-class="'icon-select'" :model-value="modelValue" @change="change" clearable filterable>
     <el-option-group v-for="iconType in elementIconTypes" :key="iconType.type" :label="iconType.type">
       <el-option v-for="iconKey in iconType.icons" :key="iconKey" :label="iconKey" :value="iconKey">
-        <el-icon :title="iconKey">
-          <component :is="getIconComponent(iconKey)" />
-        </el-icon>
+        <div class="icon-content" :title="iconKey">
+          <el-icon>
+            <component :is="getIconComponent(iconKey)" />
+          </el-icon>
+        </div>
       </el-option>
     </el-option-group>
     <template v-slot:prefix>
@@ -15,28 +17,15 @@
   </el-select>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits, withDefaults, type Component, watch, shallowRef } from 'vue';
+import { defineProps, defineEmits, type Component, watch, shallowRef } from 'vue';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { elementIconTypes } from './IconSelectData';
+import type { EpPropMergeType } from 'element-plus/es/utils';
 
-interface Option {
-  value: string,
-  component: Component
-}
-
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   modelValue?: string | undefined,
-  options?: Option[]
-}>(), {
-  options: () => {
-    return Object.entries(ElementPlusIconsVue).map((entity) => {
-      return {
-        value: entity[0],
-        component: entity[1]
-      }
-    });
-  }
-});
+  size?: EpPropMergeType<StringConstructor, "" | "default" | "small" | "large", never>,
+}>();
 
 const emits = defineEmits<{
   (e: 'update:modelValue', value: string | null): void
@@ -48,7 +37,11 @@ function change(value: string | null) {
 
 const currentSelectComponent = shallowRef<Component | null>(null);
 
-
+/**
+ * 通过图标名称, 获取图标
+ * @param iconName 图标名称
+ * @returns Component | null
+ */
 function getIconComponent(iconName: string | null | undefined) {
   if (!iconName) {
     return null;
@@ -68,8 +61,19 @@ watch(() => props.modelValue, (newValue) => {
   width: 270px;
 }
 
-.icon-select .el-select-dropdown__item {
-  padding: 0 20px;
+.icon-select .icon-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.icon-select .el-select-group .el-select-dropdown__item {
+  padding: 0;
+  width: 20%;
   border-radius: 5px;
+  height: 45px;
 }
 </style>

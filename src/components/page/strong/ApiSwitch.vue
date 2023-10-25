@@ -1,6 +1,6 @@
 <!-- 对 el-switch 包装, 支持 api 请求 -->
 <template>
-  <el-switch :model-value="modelValue" :loading="loadding" :before-change="beforeChange" @click="click" />
+  <el-switch :model-value="modelValue" :size="size" :loading="loadding" :before-change="beforeChange" @click="click" />
 </template>
 <script setup lang="ts">
 import { post } from '../util/Api';
@@ -8,10 +8,12 @@ import { defaultValue } from "../util/DefaultValue";
 import { ref, defineEmits } from 'vue';
 import { DefaultConfig } from '../DefaultConfig';
 import { Log } from '../util/Log';
+import type { EpPropMergeType } from 'element-plus/es/utils';
 
 const props = defineProps<{
   api?: string | undefined,
   modelValue?: boolean,
+  size?: EpPropMergeType<StringConstructor, "" | "default" | "small" | "large", never>,
   id?: string,
   idField?: string
 }>();
