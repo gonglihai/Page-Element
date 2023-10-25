@@ -5,11 +5,11 @@
 </template>
 <script setup lang="ts">
 import type { EpPropMergeType } from 'element-plus/es/utils';
-import { defineProps, defineEmits, withDefaults, ref, computed } from 'vue';
+import { defineProps, defineEmits, ref, computed } from 'vue';
 import { DefaultConfig } from '../DefaultConfig';
 import { defaultValue } from '../util/DefaultValue';
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   type: 'date' | 'datetime',
   modelValue?: string | number | undefined | null,
   size?: EpPropMergeType<StringConstructor, "" | "default" | "small" | "large", never>,
@@ -18,9 +18,7 @@ const props = withDefaults(defineProps<{
   showFormat?: string,
   showDateFormat?: string,
   showTimeFormat?: string
-}>(), {
-
-});
+}>()
 
 const thisValue = ref<string | undefined>('');
 
