@@ -4,7 +4,7 @@
       <el-option v-for="iconKey in iconType.icons" :key="iconKey" :label="iconKey" :value="iconKey">
         <div class="icon-content" :title="iconKey">
           <el-icon>
-            <component :is="getIconComponent(iconKey)" />
+            <component :is="transformToIconComponent(iconKey)" />
           </el-icon>
         </div>
       </el-option>
@@ -17,10 +17,10 @@
   </el-select>
 </template>
 <script setup lang="ts">
-import { defineProps, defineEmits, type Component, watch, shallowRef } from 'vue';
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { defineProps, defineEmits, watch, shallowRef, type DefineComponent } from 'vue';
 import { elementIconTypes } from './IconSelectData';
 import type { EpPropMergeType } from 'element-plus/es/utils';
+import { transformToIconComponent } from '../util/IconUtil';
 
 const props = defineProps<{
   modelValue?: string | undefined,
@@ -28,30 +28,18 @@ const props = defineProps<{
 }>();
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string | null): void
+  (e: 'update:modelValue', value: string | undefined): void
 }>()
 
-function change(value: string | null) {
+function change(value: string | undefined) {
   emits('update:modelValue', value);
 }
 
-const currentSelectComponent = shallowRef<Component | null>(null);
+const currentSelectComponent = shallowRef<DefineComponent | undefined>(undefined);
 
-/**
- * 通过图标名称, 获取图标
- * @param iconName 图标名称
- * @returns Component | null
- */
-function getIconComponent(iconName: string | null | undefined) {
-  if (!iconName) {
-    return null;
-  }
-  const find = Object.entries(ElementPlusIconsVue).find((entity) => entity[0] === iconName);
-  return find ? find[1] : null;
-}
 
 watch(() => props.modelValue, (newValue) => {
-  currentSelectComponent.value = getIconComponent(newValue);
+  currentSelectComponent.value = transformToIconComponent(newValue);
 })
 </script>
 <style>
