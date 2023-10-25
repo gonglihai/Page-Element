@@ -139,7 +139,9 @@ const config = ref({
   form: {
     item: [
       { field: 'id', name: 'ID' },
-      { field: 'name', name: '姓名' },
+      { field: 'name', name: '输入框' },
+      { type: 'textarea', field: 'textarea', name: '文本域' },
+      { type: 'number', field: 'number', name: '数字输入框' },
       {
         field: 'radio1', type: 'radio', name: '单选, options', options: [
           { id: '1', name: '选项1' },
@@ -147,6 +149,7 @@ const config = ref({
           { id: '3', name: '选项3' }
         ]
       },
+      { type: 'slider', name: '滑块', field: 'slider' },
       { field: 'radio2', type: 'radio', name: '单选, api', api: 'api/ApiSelect.json' },
       {
         field: 'checkbox1', type: 'checkbox', name: '复选框, options', options: [
@@ -188,8 +191,9 @@ const config = ref({
       },
       { field: 'cascader2', type: 'cascader', name: '级联下拉框, api', api: 'api/cascader.json', valueMapping: 'code' },
       { type: 'date', field: 'date', name: '日期(年月日)' },
-      { type: 'datetime', field: 'datetime', name: '日期时间(年月日时分秒)'},
+      { type: 'datetime', field: 'datetime', name: '日期时间(年月日时分秒)' },
       { type: 'time', field: 'time', name: '时间' },
+      { type: 'icon', field: 'icon', name: '图标' },
     ]
   }
 } as Config)
