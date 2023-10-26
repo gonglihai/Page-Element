@@ -10,7 +10,7 @@
 import type { Col } from '../Types';
 import { colType } from "../col/Index";
 
-const props = defineProps<{
+defineProps<{
   col: Col
 }>();
 

@@ -16,7 +16,7 @@ import { defaultValue } from '../../util/DefaultValue';
 import type { Col } from '../Types';
 import { transformToIconComponent } from '../../util/IconUtil';
 
-const props = defineProps<{
+defineProps<{
   col: Col & { button: ButtonItem[] }
 }>();
 

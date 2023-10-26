@@ -6,10 +6,10 @@
 import type { EpPropMergeType } from 'element-plus/es/utils';
 import { defineProps, ref, withDefaults, watch } from 'vue';
 import moment from 'moment';
-import { DefaultConfig } from '../DefaultConfig';
+import { DefaultConfig } from '../../DefaultConfig';
 
 const props = withDefaults(defineProps<{
-  modelValue: string | undefined,
+  modelValue?: string | undefined,
   size?: EpPropMergeType<StringConstructor, "" | "default" | "small" | "large", never>,
   placeholder?: string,
   valueFormat?: string

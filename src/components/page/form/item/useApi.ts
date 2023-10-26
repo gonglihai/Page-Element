@@ -1,5 +1,5 @@
 import { ref, watchEffect, toValue, computed } from 'vue'
-import { get } from '../util/Api'
+import { get } from '../../util/Api'
 
 export interface UseApiError {
   error: boolean

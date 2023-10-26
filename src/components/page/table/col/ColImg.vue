@@ -6,8 +6,8 @@
     :align="defaultValue(col.align, 'center')" :label="defaultValue(col.name, '图片')">
     <template #default="scope">
       <!-- 单图 -->
-      <el-image @click.stop v-if="col.type == 'img'" :src="imgUrl(scope)" :style="computeStyle" :preview-src-list="imgUrls(scope)"
-        preview-teleported hide-on-click-modal fit="contain">
+      <el-image @click.stop v-if="col.type == 'img'" :src="imgUrl(scope)" :style="computeStyle"
+        :preview-src-list="imgUrls(scope)" preview-teleported hide-on-click-modal fit="contain">
         <template #error>
           <div class="col-img-error-slot">
             <el-icon><icon-picture /></el-icon>
@@ -17,8 +17,8 @@
 
       <!-- 多图 -->
       <template v-else-if="col.type == 'imgs'">
-        <el-image @click.stop :style="computeStyle" :src="imgsUrl(scope)" :preview-src-list="imgsUrls(scope)" preview-teleported
-          hide-on-click-modal :infinite="false" fit="contain">
+        <el-image @click.stop :style="computeStyle" :src="imgsUrl(scope)" :preview-src-list="imgsUrls(scope)"
+          preview-teleported hide-on-click-modal :infinite="false" fit="contain">
           <template #error>
             <div class="col-img-error-slot">
               <el-icon><icon-picture /></el-icon>
@@ -46,7 +46,10 @@ const props = defineProps<{
  * @param scope element plus datatable scope
  */
 function imgUrl(scope: any): string {
-  return defaultValue(scope.row[props.col.field], undefined);
+  if (!props.col.field) {
+    return '';
+  }
+  return defaultValue(scope.row[props.col.field], '');
 }
 
 /**
@@ -70,6 +73,9 @@ function imgsUrl(scope: any): string {
  * @param scope element plus datatable scope
  */
 function imgsUrls(scope: any): Array<string> {
+  if (!props.col.field) {
+    return [];
+  }
   return toArray(scope.row[props.col.field]);
 }
 

@@ -3,11 +3,11 @@
   <el-switch :model-value="modelValue" :size="size" :loading="loadding" :before-change="beforeChange" @click="click" />
 </template>
 <script setup lang="ts">
-import { post } from '../util/Api';
-import { defaultValue } from "../util/DefaultValue";
+import { post } from '../../util/Api';
+import { defaultValue } from "../../util/DefaultValue";
 import { ref, defineEmits } from 'vue';
-import { DefaultConfig } from '../DefaultConfig';
-import { Log } from '../util/Log';
+import { DefaultConfig } from '../../DefaultConfig';
+import { Log } from '../../util/Log';
 import type { EpPropMergeType } from 'element-plus/es/utils';
 
 const props = defineProps<{

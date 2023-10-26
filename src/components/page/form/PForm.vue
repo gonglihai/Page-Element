@@ -3,7 +3,12 @@
     <el-form ref="formRef" :model="formData" label-width="120px" :rules="rules">
       <el-form-item v-for="formItem in formItems" :key="formItem.formItem.field" :label="formItem.formItem.name"
         :prop="formItem.formItem.field">
-        <component :is="formItem.component" v-bind="formItem.formItem" v-model="formData[formItem.formItem.field]" />
+        <template v-if="formItem.formItem.field">
+          <component :is="formItem.component" v-bind="formItem.formItem" v-model="formData[formItem.formItem.field]" />
+        </template>
+        <template>
+          <component :is="formItem.component" v-bind="formItem.formItem" />
+        </template>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm(formRef)">
@@ -12,10 +17,6 @@
         <el-button @click="resetForm(formRef)">重置</el-button>
       </el-form-item>
     </el-form>
-    <div>
-      rules:
-      {{ rules }}
-    </div>
     <div>
       formData:
       {{ formData }}
@@ -68,14 +69,12 @@ const formItems = computed(() => {
   if (!props.form.item || !props.form.item.length) {
     return [];
   }
-  return props.form.item
-    .filter(formItem => !!formItem.field)
-    .map(formItem => {
-      return {
-        component: formItemTypeComponent(formItem),
-        formItem: formItem
-      };
-    })
+  return props.form.item.map(formItem => {
+    return {
+      component: formItemTypeComponent(formItem),
+      formItem: formItem
+    };
+  })
 })
 
 function resetForm(formEl: FormInstance | undefined) {

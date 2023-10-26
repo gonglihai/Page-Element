@@ -3,13 +3,13 @@ import type { FormItem } from '../Types'
 import { Log } from '../../util/Log'
 
 import { ElInput, ElInputNumber, ElSlider } from 'element-plus'
-import ApiRadio from '../../strong/ApiRadio.vue'
-import ApiCheckbox from '../../strong/ApiCheckbox.vue'
-import ApiSelect from '../../strong/ApiSelect.vue'
-import ApiCascader from '../../strong/ApiCascader.vue'
-import DateTimePickerPack from '../../strong/DateTimePickerPack.vue'
-import TimePickerPack from '../../strong/TimePickerPack.vue'
-import IconSelect from '../../strong/IconSelect.vue'
+import ApiRadio from './ApiRadio.vue'
+import ApiCheckbox from './ApiCheckbox.vue'
+import ApiSelect from './ApiSelect.vue'
+import ApiCascader from './ApiCascader.vue'
+import DateTimePickerPack from './DateTimePickerPack.vue'
+import TimePickerPack from './TimePickerPack.vue'
+import IconSelect from './IconSelect.vue'
 
 export interface FormItemType {
   component: any // vue 组件

@@ -12,7 +12,7 @@ import FriendTime from '../../strong/FriendTime.vue'
 import type { Col } from '../Types'
 import { defaultValue } from '../../util/DefaultValue'
 
-const props = defineProps<{
+defineProps<{
   col: Col
 }>()
 </script>

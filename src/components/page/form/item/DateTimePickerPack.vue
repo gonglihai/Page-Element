@@ -6,8 +6,8 @@
 <script setup lang="ts">
 import type { EpPropMergeType } from 'element-plus/es/utils';
 import { defineProps, defineEmits, ref, computed, watch } from 'vue';
-import { DefaultConfig } from '../DefaultConfig';
-import { defaultValue } from '../util/DefaultValue';
+import { DefaultConfig } from '../../DefaultConfig';
+import { defaultValue } from '../../util/DefaultValue';
 import moment from 'moment';
 
 const props = defineProps<{

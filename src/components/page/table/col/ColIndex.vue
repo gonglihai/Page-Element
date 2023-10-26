@@ -8,7 +8,7 @@ import { defaultValue } from '../../util/DefaultValue';
 import type { Col } from '../Types';
 
 
-const props = defineProps<{
+defineProps<{
   col: Col
 }>();
 

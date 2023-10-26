@@ -20,8 +20,8 @@
 import { defineProps, defineEmits, watch, shallowRef, type DefineComponent } from 'vue';
 import { elementIconTypes } from './IconSelectData';
 import type { EpPropMergeType } from 'element-plus/es/utils';
-import { transformToIconComponent } from '../util/IconUtil';
-import { blankToNull } from '../util/StringUtil';
+import { transformToIconComponent } from '../../util/IconUtil';
+import { blankToNull } from '../../util/StringUtil';
 
 const props = defineProps<{
   modelValue?: string | undefined,
