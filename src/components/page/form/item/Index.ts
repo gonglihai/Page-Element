@@ -10,38 +10,69 @@ import ApiCascader from '../../strong/ApiCascader.vue'
 import DateTimePickerPack from '../../strong/DateTimePickerPack.vue'
 import TimePickerPack from '../../strong/TimePickerPack.vue'
 import IconSelect from '../../strong/IconSelect.vue'
+
+export interface FormItemType {
+  component: any // vue 组件
+  validatorTrigger: 'blur' | 'change'
+  placeholder: string | ((formItem: FormItem) => string)
+}
+
+const defaultType = {
+  component: ElInput,
+  validatorTrigger: 'change',
+  placeholder: '请输入'
+} as FormItemType
+
 /**
  * 表单项类型key 与 组件映射关系 map
  */
-export const FormItemTypeMapping: Map<String, Component> = new Map([
-  ['default', ElInput], // default input 输入框
-  ['input', ElInput], // input 输入框
-  ['textarea', ElInput], // textarea 文本域
-  ['number', ElInputNumber], // number 数字输入框
-  ['slider', ElSlider], // slider 滑块
-  ['radio', ApiRadio], // radio 单选框
-  ['checkbox', ApiCheckbox], // checkbox 选项框
-  ['select', ApiSelect], // select 下拉框
-  ['cascader', ApiCascader], // cascader 级联下拉框
-  ['date', DateTimePickerPack], // date 日期选择器
-  ['datetime', DateTimePickerPack], // datetime 日期时间选择器
-  ['time', TimePickerPack], // time 时间选择器
-  ['icon', IconSelect as Component] // 图标选择器
+export const FormItemTypeMapping: Map<String, FormItemType> = new Map([
+  // default input 输入框
+  ['default', defaultType],
+  // input 输入框
+  ['input', defaultType],
+  // textarea 文本域
+  ['textarea', defaultType],
+  // number 数字输入框
+  ['number', { component: ElInputNumber, validatorTrigger: 'blur', placeholder: '请输入' }],
+  // slider 滑块
+  ['slider', { component: ElSlider, validatorTrigger: 'change', placeholder: '请选择' }],
+  // radio 单选框
+  ['radio', { component: ApiRadio, validatorTrigger: 'change', placeholder: '请选择' }],
+  // checkbox 选项框
+  ['checkbox', { component: ApiCheckbox, validatorTrigger: 'change', placeholder: '请选择' }],
+  // select 下拉框
+  ['select', { component: ApiSelect, validatorTrigger: 'change', placeholder: '请选择' }],
+  // cascader 级联下拉框
+  ['cascader', { component: ApiCascader, validatorTrigger: 'change', placeholder: '请选择' }],
+  // date 日期选择器
+  ['date', { component: DateTimePickerPack, validatorTrigger: 'change', placeholder: '请选择' }],
+  // datetime 日期时间选择器
+  ['datetime', { component: DateTimePickerPack, validatorTrigger: 'change', placeholder: '请选择' }],
+  // time 时间选择器
+  ['time', { component: TimePickerPack, validatorTrigger: 'change', placeholder: '请选择' }],
+  // 图标选择器
+  ['icon', { component: IconSelect, validatorTrigger: 'change', placeholder: '请选择' }]
 ])
 
 /**
  * 表单项类型key 与 组件映射转换
  * @param formItem 表单项配置
  */
-export function formItemType(formItem: FormItem): Component {
-  // 未指定类型
+export function formItemTypeComponent(formItem: FormItem): Component {
+  const a = formItemType(formItem);
+  console.log(a);
+  return a.component
+}
+
+export function formItemType(formItem: FormItem): FormItemType {
   if (!formItem.type) {
-    return FormItemTypeMapping.get('default') as Component
+    return defaultType
   }
-  const component = FormItemTypeMapping.get(formItem.type)
-  if (component) {
-    return component
+  const type = FormItemTypeMapping.get(formItem.type)
+  if (!type) {
+    Log.warn('form', '无法解析的表单项类型:', formItem.type)
+    return defaultType
   }
-  Log.warn('form', '无法解析的表单项类型:', formItem.type)
-  return FormItemTypeMapping.get('default') as Component
+  return type
 }
