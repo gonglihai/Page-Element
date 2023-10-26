@@ -24,6 +24,7 @@ import { Refresh } from '@element-plus/icons-vue'
 import { toArray } from '../util/ArrayUtil'
 import { DefaultConfig } from '../DefaultConfig';
 import { defaultValue } from '../util/DefaultValue';
+import { blankToNull } from '../util/StringUtil';
 
 
 interface ApiSelectOption {
@@ -56,7 +57,8 @@ const props = withDefaults(defineProps<{
 });
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: any): void
+  (e: 'update:modelValue', value: any): void,
+  (e: 'change', value: any): void
 }>();
 
 const { error, reload, thisOptions } = useApi(props.api, null, props.options);
@@ -73,10 +75,15 @@ const thisValue = computed(() => {
   return value;
 })
 
+function changeValue(value: any) {
+  emits('update:modelValue', value)
+  emits('change', value)
+}
+
 function change(value: any) {
   const valueType = defaultValue(props.valueType, DefaultConfig.other.array.type);
   if (!value) {
-    emits('update:modelValue', valueType == 'string' ? '' : [])
+    changeValue(valueType == 'string' ? null : [])
     return;
   }
   // 多选, 是个二维数组, 去除相同父级内容
@@ -90,7 +97,7 @@ function change(value: any) {
       valueSet.add(item);
     }
   })
-  const r = valueType == 'string' ? [...valueSet].join(DefaultConfig.other.array.delimiter) : [...valueSet];
-  emits('update:modelValue', r)
+  const r = valueType == 'string' ? blankToNull([...valueSet].join(DefaultConfig.other.array.delimiter)) : [...valueSet];
+  changeValue(r)
 }
 </script>
