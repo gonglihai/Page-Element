@@ -22,31 +22,37 @@ const loadding = ref(false);
 
 const emits = defineEmits<{
   (e: 'update:modelValue', value: boolean): void,
+  (e: 'change', value: boolean): void,
   (e: 'click', $event: Event): void
 }>()
+
+function changeValue(value: boolean) {
+  emits('update:modelValue', value);
+  emits('change', value);
+}
 
 function beforeChange() {
   loadding.value = true;
   return new Promise<boolean>((success, fail) => {
-    const changeValue = !props.modelValue;
+    const changeVal = !props.modelValue;
 
     if (!props.api) {
       loadding.value = false;
       success(true);
-      emits('update:modelValue', changeValue);
+      changeValue(changeVal);
       return;
     }
 
     const idField = defaultValue(props.idField, DefaultConfig.other.id.idFieldName) as string;
     const requestParams = {
       [idField]: props.id,
-      value: changeValue
+      value: changeVal
     };
     Log.info('ApiSwitch', '切换状态 请求:', props.api, '参数:', requestParams);
     // api post 请求
     post(props.api, requestParams).then(() => {
       success(true);
-      emits('update:modelValue', changeValue);
+      changeValue(changeVal);
     })
       .catch(() => fail(false))
       .finally(() => {

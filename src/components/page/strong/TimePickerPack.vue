@@ -20,12 +20,14 @@ const props = withDefaults(defineProps<{
 const thisValue = ref<string | undefined>('');
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: string): void,
+  (e: 'change', value: string): void,
 }>()
 
 function change(value: any) {
   value = value ? moment(value).format(props.valueFormat) : value
   emits('update:modelValue', value);
+  emits('change', value)
 }
 
 watch(() => props.modelValue, (newValue) => {

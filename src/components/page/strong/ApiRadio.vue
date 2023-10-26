@@ -4,7 +4,7 @@
     <span>数据获取失败 <el-button :icon="Refresh" @click="reload()" link size="small"></el-button></span>
   </template>
   <template v-else>
-    <el-radio-group :model-value="modelValue" @change="(value) => emits('update:modelValue', value)">
+    <el-radio-group :model-value="modelValue" @change="change">
       <el-radio v-for="option in thisOptions" :key="option[valueMapping]" :label="option[valueMapping]"
         :disabled="option.disabled" :size="size" :border="border">
         {{ option[nameMapping] }}
@@ -31,10 +31,16 @@ const props = withDefaults(defineProps<{
 });
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: any): void
+  (e: 'update:modelValue', value: any): void,
+  (e: 'change', value: any): void
 }>();
 
 const { error, reload, thisOptions } = useApi(props.api, null, props.options);
+
+function change(value: any) {
+  emits('update:modelValue', value);
+  emits('change', value)
+}
 
 interface ApiRadioOption {
   disabled?: boolean | number,

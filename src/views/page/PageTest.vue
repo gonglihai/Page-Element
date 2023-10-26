@@ -3,7 +3,6 @@
   <el-link type="primary" href="https://element-plus.gitee.io/zh-CN/component/button.html" target="_blank">
     element-plus 文档
   </el-link>
-  
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
@@ -149,7 +148,7 @@ const config = ref({
           { id: '3', name: '选项3' }
         ], required: true
       },
-      { type: 'slider', name: '滑块', field: 'slider' , required: true},
+      { type: 'slider', name: '滑块', field: 'slider', required: true },
       { field: 'radio2', type: 'radio', name: '单选, api', api: 'api/ApiSelect.json', required: true },
       {
         field: 'checkbox1', type: 'checkbox', name: '复选框, options', options: [
@@ -158,7 +157,7 @@ const config = ref({
           { id: '3', name: '选项3' }
         ], required: true
       },
-      { field: 'checkbox2', type: 'checkbox', name: '复选框, options', api: 'api/ApiSelect.json' , required: true},
+      { field: 'checkbox2', type: 'checkbox', name: '复选框, options', api: 'api/ApiSelect.json', required: true },
       {
         field: 'select1', type: 'select', name: '下拉框, options', options: [
           { id: '1', name: '选项1' },
@@ -168,7 +167,7 @@ const config = ref({
       },
       { field: 'select2', type: 'select', name: '下拉框, api', api: 'api/ApiSelect.json', required: true },
       {
-        field: 'cascader1', type: 'cascader', name: '级联下拉框, options', 
+        field: 'cascader1', type: 'cascader', name: '级联下拉框, options',
         options: [
           {
             "id": "1", "name": "1", children: [
@@ -193,8 +192,8 @@ const config = ref({
       { field: 'cascader2', type: 'cascader', name: '级联下拉框, api', api: 'api/cascader.json', valueMapping: 'code', required: true },
       { type: 'date', field: 'date', name: '日期(年月日)', required: true },
       { type: 'datetime', field: 'datetime', name: '日期时间(年月日时分秒)', required: true },
-      { type: 'time', field: 'time', name: '时间' , required: true},
-      { type: 'icon', field: 'icon', name: '图标' , required: true},
+      { type: 'time', field: 'time', name: '时间', required: true },
+      { type: 'icon', field: 'icon', name: '图标', required: true },
     ]
   }
 } as Config)

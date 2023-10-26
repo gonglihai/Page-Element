@@ -41,7 +41,8 @@ const props = withDefaults(defineProps<{
 });
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: any): void
+  (e: 'update:modelValue', value: any): void,
+  (e: 'change', value: any): void
 }>();
 
 const { error, reload, thisOptions } = useApi(props.api, null, props.options);
@@ -50,6 +51,8 @@ const thisValue = computed(() => {
 })
 
 function change(value: any) {
-  emits('update:modelValue', toValue(value, props.valueType))
+  value = toValue(value, props.valueType);
+  emits('update:modelValue', value)
+  emits('change', value)
 }
 </script>

@@ -21,6 +21,7 @@ import { defineProps, defineEmits, watch, shallowRef, type DefineComponent } fro
 import { elementIconTypes } from './IconSelectData';
 import type { EpPropMergeType } from 'element-plus/es/utils';
 import { transformToIconComponent } from '../util/IconUtil';
+import { blankToNull } from '../util/StringUtil';
 
 const props = defineProps<{
   modelValue?: string | undefined,
@@ -28,11 +29,14 @@ const props = defineProps<{
 }>();
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string | undefined): void
+  (e: 'update:modelValue', value: string | null): void,
+  (e: 'change', value: string | null): void
 }>()
 
-function change(value: string | undefined) {
+function change(value: string | null) {
+  value = blankToNull(value);
   emits('update:modelValue', value);
+  emits('change', value)
 }
 
 const currentSelectComponent = shallowRef<DefineComponent | undefined>(undefined);

@@ -1,6 +1,7 @@
 // 数组工具类
 
 import { DefaultConfig } from '../DefaultConfig'
+import { blankToNull } from './StringUtil'
 
 const defaultType = DefaultConfig.other.array.type
 const defaultDelimiter = DefaultConfig.other.array.delimiter
@@ -95,13 +96,13 @@ export function toValue(
   delimiter: string = defaultDelimiter
 ) {
   if (!a) {
-    return type == 'string' ? '' : []
+    return type == 'string' ? null : []
   }
   if (typeof a == 'string' && type == 'array') {
     return a.split(delimiter)
   }
   if (a instanceof Array && type == 'string') {
-    return a.join(delimiter)
+    return blankToNull(a.join(delimiter))
   }
   return a
 }

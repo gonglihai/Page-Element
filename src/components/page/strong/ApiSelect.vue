@@ -17,6 +17,7 @@ import { useApi } from './useApi';
 import type { EpPropMergeType } from 'element-plus/es/utils/vue/props/types';
 import { Refresh } from '@element-plus/icons-vue'
 import { toArray, toValue } from '../util/ArrayUtil'
+import { blankToNull } from '../util/StringUtil';
 
 
 interface ApiSelectOption {
@@ -41,7 +42,8 @@ const props = withDefaults(defineProps<{
 });
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: any): void
+  (e: 'update:modelValue', value: any): void,
+  (e: 'change', value: any): void
 }>();
 
 const { error, reload, thisOptions } = useApi(props.api, null, props.options);
@@ -50,7 +52,12 @@ const thisValue = computed(() => {
   return props.multiple ? toArray(props.modelValue, props.valueType) : props.modelValue;
 })
 
+function changeValue(value: any) {
+  emits('update:modelValue', value);
+  emits('change', value);
+}
+
 function change(value: any) {
-  emits('update:modelValue', props.multiple ? toValue(value, props.valueType) : value)
+  changeValue(props.multiple ? toValue(value, props.valueType) : blankToNull(value));
 }
 </script>

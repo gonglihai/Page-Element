@@ -24,11 +24,13 @@ const props = defineProps<{
 const thisValue = ref<string | undefined>('');
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: string): void,
+  (e: 'change', value: string): void,
 }>()
 
 function change(value: string) {
   emits('update:modelValue', value);
+  emits('change', value);
 }
 
 // 上层 modelValue 改变, 改变本级 value
